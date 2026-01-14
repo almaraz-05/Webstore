@@ -3,6 +3,7 @@ session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require_once 'secrets.php';
 
 // Redirect if user not logged in
 if (!isset($_SESSION['user_id'])) {
@@ -14,8 +15,6 @@ $userid = $_SESSION['user_id'];
 
 
 $dsn = "mysql:host=courses;dbname=z1963386";
-$username = "z1963386";
-$password = "2000Dec22";
 
 try {
     $pdo = new PDO($dsn, $username, $password);

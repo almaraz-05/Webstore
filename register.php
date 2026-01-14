@@ -2,11 +2,10 @@
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+require_once 'secrets.php';
 
 // Database connection
 $dsn = "mysql:host=courses;dbname=z1963386";
-$username = "z1963386";
-$password = "2000Dec22";
 
 try {
     $pdo = new PDO($dsn, $username, $password);

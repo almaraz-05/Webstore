@@ -8,7 +8,7 @@ require_once 'secrets.php';
 $dsn = "mysql:host=courses;dbname=z1963386";
 
 try {
-    $pdo = new PDO($dsn, $username, $password);
+    $pdo = new PDO($dsn, $db_username, $db_password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection to database failed: " . $e->getMessage());

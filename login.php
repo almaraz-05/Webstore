@@ -46,16 +46,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
-        h1, h2 { color: #333; }
-        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background-color: #f9f9f9; width: 400px; }
-        label { display: inline-block; width: 150px; margin-bottom: 10px; }
-        input, select { padding: 5px; margin-bottom: 10px; width: 300px; }
-        input[type="submit"] { background-color: #4CAF50; color: white; padding: 8px 15px; border: none; cursor: pointer; width: auto; }
-        input[type="submit"]:hover { background-color: #45a049; }
-        .error { color: red; margin-bottom: 15px; }
-    </style>
+    <link rel=stylesheet" href=styles.css>
+    
 </head>
 <body>
 

@@ -50,32 +50,23 @@ try {
     
 </head>
 <body>
+<div class="container login-container">
+    <h1>Login</h1>
 
-<h1>Login</h1>
+    <?php if (!empty($error)): ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
 
-<?php if (!empty($error)): ?>
-    <div class="error"><?php echo htmlspecialchars($error); ?></div>
-<?php endif; ?>
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter Username" required>
 
-<form method="POST">
-    <div>
-        <label for="username"><b>Username</b></label><br>
-        <input type="text" placeholder="Enter Username" name="username" id="username" required><br><br>
-    </div>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter Password" required>
 
-    <div>
-        <label for="password"><b>Password</b></label><br>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required><br><br>
-    </div>
+        <input type="submit" value="Login">
 
-    <div>
-        <input type="submit" value="Login"><br><br>
-    </div>
-
-    <div>
-        <span class="register"><a href="register.php">Register</a></span><br>
-    </div>
-</form>
-
-</body>
-</html>
+        <p><a href="register.php">Register</a></p>
+    </form>
+</div>
+</body></html>

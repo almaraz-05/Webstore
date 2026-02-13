@@ -60,42 +60,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-
+    <title>Register</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h2>Create an Account</h2>
+<div class="container auth-container">
+    <div class="auth-header">
+        <h2>Create an Account</h2>
+        <p class="auth-switch">
+            Already have an account? <a href="login.php">Login here</a>
+        </p>
+    </div>
 
-<?php if (!empty($error)): ?>
-    <div class="alert-danger"><?php echo $error; ?></div>
-<?php endif; ?>
+    <?php if (!empty($error)): ?>
+        <div class="alert-danger"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
 
-<?php if (!empty($success)): ?>
-    <div class="alert-success"><?php echo $success; ?></div>
-<?php endif; ?>
+    <?php if (!empty($success)): ?>
+        <div class="alert-success"><?php echo htmlspecialchars($success); ?></div>
+    <?php endif; ?>
 
-<form method="post" action="">
-    <label for="full_name">Full Name</label>
-    <input type="text" id="full_name" name="full_name" required>
+    <form method="post" action="">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" required>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
 
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
 
-    <label for="confirm_password">Confirm Password</label>
-    <input type="password" id="confirm_password" name="confirm_password" required>
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
 
-    <input type="submit" value="Register">
-</form>
-
-<p>Already have an account? <a href="login.php">Login here</a></p>
+        <input type="submit" value="Register" class="btn btn-primary">
+    </form>
+</div>
 
 </body>
 </html>

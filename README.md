@@ -4,3 +4,7 @@ A PHP and MariaDB web application where users can create their own accounts, log
 
 Live demo:
 https://students.cs.niu.edu/~z1963386/Webstore/login.php
+
+Test Login:
+Username: Example123
+Password: Password

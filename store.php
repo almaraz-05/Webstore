@@ -86,63 +86,75 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
   <body>
 
-<div style="text-align: right;">
-    <form method="post" style="display: inline;">
-        <button type="submit" name="logout">Sign Out</button>
-    </form>
-</div>
+<div class="container store-layout">
 
+    <!-- top bar -->
+    <div class="store-top">
+        <form method="post">
+            <button type="submit" name="logout" class="btn btn-secondary">Sign Out</button>
+        </form>
 
-    <h2>Items Currently Available</h2>
+        <a href="checkout.php" class="btn btn-primary">View Your Shopping Cart</a>
+    </div>
 
-    <?php if (!empty($products)) : ?>
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Price ($)</th>
-                <th>Quantity Available</th>
-            </tr>
-            <?php foreach ($products as $row) : ?>
+    <!-- LEFT: product table -->
+    <div class="store-left">
+        <h2>Items Currently Available</h2>
+
+        <?php if (!empty($products)) : ?>
+            <table class="cart-table">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price ($)</th>
+                    <th>Quantity Available</th>
+                </tr>
+
+                <?php foreach ($products as $row) : ?>
                 <tr>
                     <td><?= htmlspecialchars($row["ProdID"]) ?></td>
                     <td><?= htmlspecialchars($row["Prod_Name"]) ?></td>
                     <td>$<?= number_format($row["Price"], 2) ?></td>
                     <td><?= htmlspecialchars($row["Quantity"]) ?></td>
                 </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php else : ?>
-        <p>We are out of stock in everything!</p>
-    <?php endif; ?>
+                <?php endforeach; ?>
+            </table>
+        <?php else : ?>
+            <p>We are out of stock in everything!</p>
+        <?php endif; ?>
+    </div>
 
-    <br><br>
-    <h3>Add or Remove Items from Your Cart</h3>
+    <!-- RIGHT: cart form -->
+    <div class="store-right">
+        <h3>Add or Remove Items from Your Cart</h3>
 
-    <form method="post" action="">
-        <label for="product_dropdown">Select a Product:</label><br>
-        <select name="product_dropdown">
-            <option value="">Choose a product</option>
-            <?php foreach ($products as $row) : ?>
-                <option value="<?= htmlspecialchars($row["ProdID"]) ?>">
-                    <?= htmlspecialchars($row["Prod_Name"]) ?>
-                </option>
-            <?php endforeach; ?>
-        </select><br><br>
+        <form method="post">
 
-        <label for="product_id">OR Enter item ID:</label><br>
-        <input type="number" name="product_id" min="1"><br><br>
+            <label>Select a Product:</label>
+            <select name="product_dropdown">
+                <option value="">Choose a product</option>
+                <?php foreach ($products as $row) : ?>
+                    <option value="<?= htmlspecialchars($row["ProdID"]) ?>">
+                        <?= htmlspecialchars($row["Prod_Name"]) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
 
-        <label for="quantity">Quantity:</label><br>
-        <input type="number" name="quantity" value="1" min="1"><br><br>
+            <label>OR Enter item ID:</label>
+            <input type="number" name="product_id" min="1">
 
-        <button type="submit" name="action" value="add">Add to Cart</button>
-        <button type="submit" name="action" value="remove">Remove from Cart</button>
-    </form>
+            <label>Quantity:</label>
+            <input type="number" name="quantity" value="1" min="1">
 
-    <br><br>
-    <!-- Manual link to view cart if they want -->
-    <a href="checkout.php"><button type="button">View Your Shopping Cart</button></a>
+            <div class="actions">
+                <button type="submit" name="action" value="add" class="btn btn-primary">Add to Cart</button>
+                <button type="submit" name="action" value="remove" class="btn btn-secondary">Remove</button>
+            </div>
 
-  </body>
-</html>
+        </form>
+    </div>
+
+</div>
+
+</body
+></html>

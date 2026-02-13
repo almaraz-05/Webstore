@@ -72,47 +72,15 @@ try {
 }
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>Order Confirmation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f9f9f9;
-        }
-        .confirmation {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 30px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .confirmation h2 {
-            color: #4CAF50;
-        }
-        .details {
-            margin-top: 20px;
-            padding: 10px;
-            background: #f1f1f1;
-        }
-        .details p {
-            margin: 8px 0;
-        }
-        .button {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 10px 20px;
-            background: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="container">
     <div class="confirmation">
         <h2>Order Confirmation</h2>
 
@@ -121,20 +89,26 @@ try {
 
             <div class="details">
                 <p><strong>Order ID:</strong> <?php echo $orderID; ?></p>
-                <p><strong>Tracking Number:</strong> <?php
-                    
+
+                <p><strong>Tracking Number:</strong>
+                <?php
                     $stmt = $pdo->prepare("SELECT Tracking_Num FROM Orders WHERE OrderID = ?");
                     $stmt->execute([$orderID]);
                     echo htmlspecialchars($stmt->fetchColumn());
-                ?></p>
+                ?>
+                </p>
+
                 <p><strong>Order Total:</strong> $<?php echo number_format($total, 2); ?></p>
                 <p><strong>Order Date:</strong> <?php echo date("Y-m-d"); ?></p>
             </div>
 
-            <a class="button" href="store.php">Return to Store</a>
+            <a class="btn btn-primary" href="store.php">Return to Store</a>
+
         <?php else: ?>
-            <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
     </div>
+</div>
+
 </body>
 </html>

@@ -55,21 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-    <style>
-        body {font-family: Arial, sans-serif; margin: 20px; line-height: 1.6;}
-        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background-color: #f9f9f9; width: 400px;}
-        label { display: block; margin-bottom: 5px; }
-        input { padding: 5px; margin-bottom: 10px; width: 100%; }
-        input[type="submit"] { background-color: #4CAF50; color: white; border: none; cursor: pointer; width: auto; }
-        input[type="submit"]:hover { background-color: #45a049; }
-        .alert-danger { background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; }
-        .alert-success { background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; }
-    </style>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 

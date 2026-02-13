@@ -1,32 +1,228 @@
-body 
-    { 
-        font-family: Arial, sans-serif; 
-        margin: 20px; 
-        line-height: 1.6;
-     }
+/* ===== Base ===== */
+* {
+    box-sizing: border-box;
+}
 
+/* ===== Page styling ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px 0;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #e8f0ff, #f7f9fc);
+    display: flex;
+    justify-content: center;
+}
 
-h1, h2 
-    { 
-        color: #333; 
-    }
+/* ===== Main container ===== */
+.container {
+    background: white;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 900px;
+    max-width: 92%;
+}
 
-form 
-    { 
-        margin-bottom: 20px; 
-        padding: 15px; 
-        border: 1px solid #ddd; 
-        background-color: #f9f9f9; 
-        width: 400px; 
-    }
+/* ===== Headings ===== */
+h1, h2, h3 {
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-        label { display: inline-block; width: 150px; margin-bottom: 10px; }
+/* ===== Form card ===== */
+form {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #e2e2e2;
+    margin-bottom: 20px;
+}
 
-        input, select { padding: 5px; margin-bottom: 10px; width: 300px; }
+/* ===== Labels ===== */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #444;
+}
 
-        input[type="submit"] { background-color: #4CAF50; color: white; padding: 8px 15px; border: none; cursor: pointer; width: auto; }
+/* ===== Inputs ===== */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
 
+/* focus effect */
+input:focus, select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76,175,80,0.15);
+}
 
-        input[type="submit"]:hover { background-color: #45a049; }
-        .error { color: red; margin-bottom: 15px; }
-    
+/* ===== Buttons (general) ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4CAF50, #43a047);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+}
+
+.btn-secondary {
+    background: #eef2f7;
+    color: #333;
+    border: 1px solid #d7dee8;
+}
+
+.btn-secondary:hover {
+    background: #e3e9f2;
+}
+
+/* Make submit match the button theme */
+input[type="submit"] {
+    background: linear-gradient(135deg, #4CAF50, #43a047);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ===== Alerts / errors ===== */
+.error,
+.alert-danger {
+    color: #b71c1c;
+    background: #fdecea;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+}
+
+/* ===== Table styles (checkout/cart) ===== */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e9edf3;
+    text-align: left;
+}
+
+.cart-table th {
+    background: #4CAF50;
+    color: white;
+}
+
+.cart-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* ===== Total row + actions (checkout/cart) ===== */
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e9edf3;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.total-label {
+    font-weight: bold;
+}
+
+.total-value {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Links */
+a {
+    color: #1a73e8;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Order confirmation ===== */
+.confirmation {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-radius: 10px;
+}
+
+.confirmation h2 {
+    color: #4CAF50;
+}
+
+.details {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.details p {
+    margin: 8px 0;
+}

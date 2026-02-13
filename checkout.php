@@ -36,53 +36,73 @@ try {
 }
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h2>Shopping Cart</h2>
+<div class="container">
+    <h2>Shopping Cart</h2>
 
-<?php if (!empty($cart)): ?>
-    <table border="1">
-        <tr>
-            <th>Product Name</th>
-            <th>Price Each</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
+    <?php if (!empty($cart)): ?>
 
-        <?php
-        foreach ($cart as $item) {
-            $subtotal = $item['Price'] * $item['Amount'];
-            $total += $subtotal;
+        <div class="card">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price Each</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $total = 0;
 
-            echo "<tr>";
-            echo "<td>" . $item['Prod_name'] . "</td>";
-            echo "<td>$" . number_format($item['Price'], 2) . "</td>";
-            echo "<td>" . $item['Amount'] . "</td>";
-            echo "<td>$" . number_format($subtotal, 2) . "</td>";
-            echo "</tr>";
-        }
-        ?>
+                    foreach ($cart as $item) {
+                        $subtotal = $item['Price'] * $item['Amount'];
+                        $total += $subtotal;
 
-    </table>
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($item['Prod_name']) . "</td>";
+                        echo "<td>$" . number_format($item['Price'], 2) . "</td>";
+                        echo "<td>" . (int)$item['Amount'] . "</td>";
+                        echo "<td>$" . number_format($subtotal, 2) . "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
 
-    <h3>Total: <?php echo "$" . number_format($total, 2); ?></h3>
+            <div class="total-row">
+                <span class="total-label">Total:</span>
+                <span class="total-value">$<?php echo number_format($total, 2); ?></span>
+            </div>
 
-    <form method="POST" action="shipping_billing.php">
-        <input type="submit" value="Proceed to Checkout">
-    </form>
-    <br>
-    <a href="store.php"><button type="button">Continue Shopping</button></a>
+            <div class="actions">
+                <form method="POST" action="shipping_billing.php">
+                    <input type="submit" value="Proceed to Checkout" class="btn btn-primary">
+                </form>
 
+                <a href="store.php" class="btn btn-secondary">Continue Shopping</a>
+            </div>
+        </div>
 
-<?php else: ?>
+    <?php else: ?>
 
-    <p>Your cart is empty!</p>
-    <a href="store.php"><button type="button">Back to Store</button></a>
-<?php endif; ?>
+        <div class="card">
+            <p class="muted">Your cart is empty.</p>
+            <a href="store.php" class="btn btn-primary">Back to Store</a>
+        </div>
+
+    <?php endif; ?>
+</div>
 
 </body>
 </html>

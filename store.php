@@ -81,6 +81,9 @@ $stmt = $pdo->query($sql);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
   <body>
 
 <div style="text-align: right;">
